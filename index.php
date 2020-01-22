@@ -27,7 +27,7 @@
  </form>
  <?php
     try {
-    $conn = new PDO("sqlsrv:server = tcp:iwanawanappserver.database.windows.net,1433; Database = iwanawandb", "iwanawan", "{your_password_here}");
+    $conn = new PDO("sqlsrv:server = tcp:iwanawanappserver.database.windows.net,1433; Database = iwanawandb", "iwanawan", "{Oneone050693}");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
@@ -36,7 +36,7 @@ catch (PDOException $e) {
 }
 
 // SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "iwanawan", "pwd" => "{your_password_here}", "Database" => "iwanawandb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$connectionInfo = array("UID" => "iwanawan", "pwd" => "{oneone050693}", "Database" => "iwanawandb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:iwanawanappserver.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
