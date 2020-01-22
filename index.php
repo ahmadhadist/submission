@@ -56,9 +56,10 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             $stmt->bindValue(3, $job);
             $stmt->bindValue(4, $date);
             $stmt->execute();
-        } catch(Exception $e) {
-            echo "Failed: " . $e;
-        }
+        } catch (PDOException $e) {
+              print("Error connecting to SQL Server.");
+              die(print_r($e));
+         }
 
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
@@ -83,8 +84,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             } else {
                 echo "<h3>No one is currently registered.</h3>";
             }
-        } catch(Exception $e) {
-            echo "Failed: " . $e;
+        } catch (PDOException $e) {
+             print("Error connecting to SQL Server.");
+             die(print_r($e));
         }
     }
  ?>
