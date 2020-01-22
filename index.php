@@ -26,10 +26,6 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-    $host = "iwanawanappserver.database.windows.net";
-    $user = "iwanawan";
-    $pass = "Oneone050693";
-    $db = "iwanawandb";
 
     try {
     $conn = new PDO("sqlsrv:server = tcp:iwanawanappserver.database.windows.net,1433; Database = iwanawandb", "iwanawan", "{Oneone050693}");
@@ -60,10 +56,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             $stmt->bindValue(3, $job);
             $stmt->bindValue(4, $date);
             $stmt->execute();
-        } catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+        } catch(Exception $e) {
+            echo "Failed: " . $e;
+        }
 
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
@@ -88,10 +83,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             } else {
                 echo "<h3>No one is currently registered.</h3>";
             }
-        } catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+        } catch(Exception $e) {
+            echo "Failed: " . $e;
+        }
     }
  ?>
  </body>
