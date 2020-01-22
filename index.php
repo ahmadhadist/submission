@@ -26,6 +26,11 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
+    $host = "iwanawanappserver.database.windows.net";
+    $user = "iwanawan";
+    $pass = "Oneone050693";
+    $db = "iwanawandb";
+
     try {
     $conn = new PDO("sqlsrv:server = tcp:iwanawanappserver.database.windows.net,1433; Database = iwanawandb", "iwanawan", "{Oneone050693}");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
