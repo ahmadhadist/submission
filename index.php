@@ -26,9 +26,9 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-
-    try {
-    $conn = new PDO("sqlsrv:server = tcp:iwanawanappserver.database.windows.net,1433; Database = iwanawandb", "iwanawan", "Oneone050693");
+// PHP Data Objects(PDO) Sample Code:
+try {
+    $conn = new PDO("sqlsrv:server = tcp:awanappserver.database.windows.net,1433; Database = awandb", "awan", "Oneone050693");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
@@ -37,10 +37,9 @@ catch (PDOException $e) {
 }
 
 // SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "iwanawan", "pwd" => "Oneone050693", "Database" => "iwanawandb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:iwanawanappserver.database.windows.net,1433";
+$connectionInfo = array("UID" => "awan", "pwd" => "Oneone050693", "Database" => "awandb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = "tcp:awanappserver.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-
 
     if (isset($_POST['submit'])) {
         try {
