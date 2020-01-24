@@ -26,20 +26,18 @@
        <input type="submit" name="load_data" value="Load Data" />
  </form>
  <?php
-// PHP Data Objects(PDO) Sample Code:
-try {
-    $conn = new PDO("sqlsrv:server = tcp:awanappserver.database.windows.net,1433; Database = awandb", "awan", "Oneone050693");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+    $host = "tcp:awanappserver.database.windows.net,1433";
+    $user = "awan";
+    $pass = "Oneone050693";
+    $db = "awandb";
 
-// SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "awan", "pwd" => "Oneone050693", "Database" => "awandb", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:awanappserver.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+    try {
+        $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+    } catch(Exception $e) {
+        echo "Failed: " . $e;
+    }
+
 
     if (isset($_POST['submit'])) {
         try {
@@ -56,10 +54,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             $stmt->bindValue(3, $job);
             $stmt->bindValue(4, $date);
             $stmt->execute();
-        } catch (PDOException $e) {
-              print("Error connecting to SQL Server.");
-              die(print_r($e));
-         }
+        } catch(Exception $e) {
+        echo "Failed: " . $e;
+    }
 
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
@@ -84,10 +81,9 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             } else {
                 echo "<h3>No one is currently registered.</h3>";
             }
-        } catch (PDOException $e) {
-             print("Error connecting to SQL Server.");
-             die(print_r($e));
-        }
+        } catch(Exception $e) {
+        echo "Failed: " . $e;
+    }
     }
  ?>
  </body>
